@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "public": true,
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ],
+  "env": {
+    "AFFILIATE_ID": "17359570151"
+  }
+}
