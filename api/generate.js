@@ -4,7 +4,7 @@ const http = require('http');
 // ============================================
 // CẤU HÌNH
 // ============================================
-const DEFAULT_AFFILIATE_ID = process.env.AFFILIATE_ID || '17359570151';
+const DEFAULT_AFFILIATE_ID = process.env.AFFILIATE_ID || '17336480445';
 // ============================================
 
 /**
@@ -81,11 +81,11 @@ function extractShopeeIds(url) {
 /**
  * BƯỚC 3: Build affiliate link đúng format Shopee Affiliate
  *
- * Input:  shopid=388966325, itemid=6779525116, affiliateId=17359570151
+ * Input:  shopid=388966325, itemid=6779525116, affiliateId=17336480445
  * Output: https://s.shopee.vn/an_redir
  *           ?origin_link=https%3A%2F%2Fshopee.vn%2Fproduct%2F388966325%2F6779525116
  *           &share_channel_code=4
- *           &affiliate_id=17359570151
+ *           &affiliate_id=17336480445
  *           &sub_id=addlivetag----
  */
 function buildAffiliateLink(ids, resolvedUrl, affiliateId) {
