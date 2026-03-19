@@ -645,7 +645,7 @@
   }
 
   // ============================================================
-  // PASTE BUTTON
+  // PASTE BUTTON (click nút 📋)
   // ============================================================
   document.getElementById('pasteBtn').addEventListener('click', async () => {
     try {
@@ -653,8 +653,8 @@
         const text = await navigator.clipboard.readText();
         if (text && text.trim()) {
           document.getElementById('urlInput').value = text.trim();
-          showToast('Đã dán link!');
-          setTimeout(() => handleSubmit(), 300);
+          showToast('Đã dán — đang chuyển đổi...');
+          setTimeout(() => handleSubmit(), 200);
         }
       } else {
         document.getElementById('urlInput').focus();
@@ -663,6 +663,19 @@
     } catch {
       document.getElementById('urlInput').focus();
       showToast('Nhấn Ctrl+V để dán link', 'warn');
+    }
+  });
+
+  // ============================================================
+  // AUTO CONVERT KHI PASTE (Ctrl+V hoặc long-press trên mobile)
+  // ============================================================
+  document.getElementById('urlInput').addEventListener('paste', (e) => {
+    const pasted = (e.clipboardData || window.clipboardData).getData('text');
+    if (pasted && pasted.trim()) {
+      e.preventDefault();
+      document.getElementById('urlInput').value = pasted.trim();
+      showToast('Đã dán — đang chuyển đổi...');
+      setTimeout(() => handleSubmit(), 200);
     }
   });
 

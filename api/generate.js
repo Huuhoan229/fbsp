@@ -81,30 +81,28 @@ function extractShopeeIds(url) {
 /**
  * BƯỚC 3: Build affiliate link đúng format Shopee Affiliate
  *
- * Input:  shopid=388966325, itemid=6779525116, affiliateId=17336480445
+ * Dùng path chuẩn từ resolved URL (giữ nguyên slug shop):
+ * Input resolved:  https://shopee.vn/opaanlp/388966325/6779525116?...
+ * origin_link:     https://shopee.vn/opaanlp/388966325/6779525116
  * Output: https://s.shopee.vn/an_redir
- *           ?origin_link=https%3A%2F%2Fshopee.vn%2Fproduct%2F388966325%2F6779525116
- *           &share_channel_code=4
+ *           ?origin_link=https%3A%2F%2Fshopee.vn%2Fopaanlp%2F388966325%2F6779525116
  *           &affiliate_id=17336480445
  *           &sub_id=addlivetag----
  */
 function buildAffiliateLink(ids, resolvedUrl, affiliateId) {
   let originLink;
 
-  if (ids && ids.shopid && ids.itemid) {
-    originLink = `https://shopee.vn/product/${ids.shopid}/${ids.itemid}`;
-  } else {
-    // Fallback: bỏ query params
-    try {
-      const p = new URL(resolvedUrl);
-      originLink = `${p.protocol}//${p.hostname}${p.pathname}`;
-    } catch {
-      originLink = resolvedUrl.split('?')[0];
-    }
+  try {
+    const p = new URL(resolvedUrl);
+    // Lấy đúng path từ URL đã resolve — bao gồm slug shop
+    // Ví dụ: /opaanlp/388966325/6779525116
+    originLink = `${p.protocol}//${p.hostname}${p.pathname}`;
+  } catch {
+    originLink = resolvedUrl.split('?')[0];
   }
 
   const encoded = encodeURIComponent(originLink);
-  return `https://s.shopee.vn/an_redir?origin_link=${encoded}&share_channel_code=4&affiliate_id=${affiliateId}&sub_id=addlivetag----`;
+  return `https://s.shopee.vn/an_redir?origin_link=${encoded}&affiliate_id=${affiliateId}&sub_id=addlivetag----`;
 }
 
 /**
