@@ -253,16 +253,38 @@
       text-decoration: none;
     }
     .btn-action:hover { transform: translateY(-1px); }
-    .btn-copy {
+    .link-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .copy-inline-btn {
       background: var(--orange);
       color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
     }
-    .btn-copy:hover { box-shadow: 0 4px 16px rgba(238,77,45,.35); }
+    .copy-inline-btn:hover {
+      background: var(--orange-lt);
+      transform: scale(1.04);
+    }
     .btn-buy {
-      background: var(--dark);
+      background: var(--green);
       color: white;
     }
-    .btn-buy:hover { box-shadow: 0 4px 16px rgba(26,26,46,.25); }
+    .btn-buy:hover { box-shadow: 0 4px 16px rgba(0,177,79,.3); }
+    .btn-fb {
+      background: #1877F2;
+      color: white;
+    }
+    .btn-fb:hover { box-shadow: 0 4px 16px rgba(24,119,242,.3); }
 
     /* ---- PRODUCT INFO ---- */
     .product-section {
@@ -450,15 +472,20 @@
       <div class="result-badge">Link đã tạo thành công</div>
     </div>
     <div class="link-display">
-      <div class="link-display-label">Affiliate Link của bạn</div>
+      <div class="link-box-header">
+        <div class="result-badge">✓ Link 1</div>
+        <button class="copy-inline-btn" id="copyBtn">📋 Copy</button>
+      </div>
       <div class="link-text" id="linkText">—</div>
     </div>
     <div class="action-row">
-      <button class="btn-action btn-copy" id="copyBtn">
-        📋 Copy Link
-      </button>
-      <a class="btn-action btn-buy" id="buyBtn" href="#" target="_blank" rel="noopener">
+      <a class="btn-action btn-buy" id="buyBtn" href="#" target="_blank" rel="noopener" style="text-decoration:none;">
         🛒 Mua Ngay
+      </a>
+      <a class="btn-action btn-fb"
+         href="https://www.facebook.com/share/p/1BNGgtWEMd/?mibextid=wwXIfr"
+         target="_blank" rel="noopener" style="text-decoration:none;">
+        📘 Chia sẻ
       </a>
     </div>
     <!-- Product info -->
@@ -472,25 +499,28 @@
   <div class="card guide-card" style="animation-delay:.1s">
     <div class="guide-header">
       <div class="dot"></div>
-      Hướng dẫn sử dụng
+      Hướng dẫn
     </div>
     <div class="guide-steps">
       <div class="step">
         <div class="step-num">1</div>
-        <div class="step-text">Mở Shopee, tìm sản phẩm bạn muốn chia sẻ và <b>sao chép link</b> (kể cả link rút gọn shope.ee).</div>
+        <div class="step-text">Sau khi tạo link, nhấn <b>Copy Link</b>.</div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <div class="step-text">Dán link vào ô trên và nhấn <b>Tạo Link Ngay</b>.</div>
+        <div class="step-text">Dán link dưới bình luận bài đăng này.</div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <div class="step-text">Nhấn <b>Copy Link</b> để sao chép link affiliate của bạn.</div>
+        <div class="step-text">Click vào link để mở Shopee sẽ nhận được mã.</div>
       </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-text">Chia sẻ link cho bạn bè — khi họ mua hàng, bạn nhận được <b>hoa hồng</b>! 🎉</div>
-      </div>
+    </div>
+    <div style="padding: 0 20px 20px;">
+      <a href="https://www.facebook.com/share/p/1BNGgtWEMd/?mibextid=wwXIfr"
+         target="_blank" rel="noopener"
+         class="btn-action btn-fb" style="display:inline-flex; text-decoration:none;">
+        📘 Đến bài đăng Facebook
+      </a>
     </div>
   </div>
 
